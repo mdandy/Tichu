@@ -1,0 +1,15 @@
+/* CSS Document */
+
+body 
+{
+	background:	white url(../images/woodbg.jpg);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin:	0px;
+	padding: 0px;
+}
+
+#container
+{
+	width: 1024px;
+	margin: 0px auto;
+}
