@@ -1,0 +1,43 @@
+/* CSS Document */
+
+#scoreboard
+{
+	background: url(../images/scoreboard.png) no-repeat center;
+	width: 250px;
+	height: 700px;
+	font-family: "crayon-crumble", "pencil-pete";
+	color: white;
+	float: right;
+	margin-top: 40px;
+}
+
+#scoreboard_container
+{
+	margin: 25px 13px 22px 13px;
+	height: 653px;
+	overflow: auto;
+}
+
+#scoreboard table
+{
+	margin: 0px auto;
+	padding-top: 15px;
+}
+
+#scoreboard table thead
+{
+	height: 2000px;
+}
+
+#scoreboard table tbody td
+{
+	text-align: right;
+}
+
+#scoreboard .label
+{
+	width: 20px;
+	color: #E7060C;
+	text-align: left;
+	font-weight: bold;
+}

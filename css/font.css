@@ -1,0 +1,16 @@
+/* CSS Document */
+
+@font-face {
+    font-family: "pencil-pete";
+    src: url("../fonts/PPETRIAL.otf") format("opentype");
+    src: url("../fonts/PPETRIAL.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "crayon-crumble";
+    src: url("../fonts/DK Crayon Crumble.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

@@ -5,12 +5,60 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Tichu</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+	
+	<link rel="stylesheet" type="text/css" href="css/font.css" />
 	<link rel="stylesheet" type="text/css" href="css/general.css" />
+	<link rel="stylesheet" type="text/css" href="css/scoreboard.css" />
+	
     <script type="text/javascript" src="scripts/jquery-1.8.0.min.js" /></script>
 </head>
 
 <body>
+<div id="overlay" class="hidden"></div>
 <div id="container">
+	<div id="scoreboard">
+		<div id="scoreboard_container">
+		<table cellpadding="5">
+			<thead>
+				<tr>
+					<th></th>
+					<th colspan="2">Player 1<br />Player 2</th>
+					<th colspan="2">Player 3<br />Player 4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="label"></td>
+					<td></td>
+					<td>0</td>
+					<td></td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td class="label"></td>
+					<td>+60</td>
+					<td>60</td>
+					<td>+40</td>
+					<td>40</td>
+				</tr>
+				<tr>
+					<td class="label"></td>
+					<td>+30</td>
+					<td>90</td>
+					<td>+70</td>
+					<td>110</td>
+				</tr>
+				<tr>
+					<td class="label">T</td>
+					<td>+100</td>
+					<td>190</td>
+					<td>-100</td>
+					<td>10</td>
+				</tr>	
+			</tbody>
+		</table>
+		</div>
+	</div>
 </div>
 </body>
 

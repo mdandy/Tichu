@@ -2,7 +2,7 @@
 
 body 
 {
-	background:	white url(../images/woodbg.jpg);
+	background:	white url("../images/woodbg.jpg");
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin:	0px;
 	padding: 0px;
