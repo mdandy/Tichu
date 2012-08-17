@@ -13,8 +13,8 @@
 
 #scoreboard_container
 {
-	margin: 25px 13px 22px 13px;
-	height: 653px;
+	margin: 25px 13px 10px 13px;
+	height: 585px;
 	overflow: auto;
 }
 
@@ -22,11 +22,6 @@
 {
 	margin: 0px auto;
 	padding-top: 15px;
-}
-
-#scoreboard table thead
-{
-	height: 2000px;
 }
 
 #scoreboard table tbody td
@@ -40,4 +35,9 @@
 	color: #E7060C;
 	text-align: left;
 	font-weight: bold;
+}
+
+#scoreboard #menu
+{
+	text-align: center;
 }

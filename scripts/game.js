@@ -68,5 +68,5 @@
 	 loadState: function()
 	 {
 		 
-	 },
+	 }
  }

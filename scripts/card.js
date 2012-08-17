@@ -106,7 +106,7 @@ var CardHelper =
 	
 	/**
 	 * Draw the card on a canvas.
-	 * @param {svg} parent The parent ode where the image will be drawn
+	 * @param {DOM} parent The parent node where the image will be drawn
 	 * @param {Card} card The card to be drawn
 	 * @param {int} x The x-coordinate where the card will be drawn
 	 * @param {int} y The y-coordinate where the card will be drawn
@@ -120,5 +120,55 @@ var CardHelper =
 			src = CardHelper.deck_src + "back.png";
 		var img = '<img src="' + src + '" />';
 		$(parent).html(img);
+	},
+	
+	/**
+	 * Draw a player's hand.
+	 * @param {DOM} parent The parent node where the image will be drawn
+	 * @param {Card[]} cards Ar array of cards to be drawn
+	 * @param {string} orientation The rientation of the player. It should be one of these:
+	 *		- "N" = north player
+	 *		- "W" = west player
+	 *		- "E" = east player
+	 *		- "S" = south player
+	 */
+	drawHand: function(parent, cards, orientation)
+	{
+		if (orientation.toUpperCase() == "N")
+		{
+			var hand = $('<ol id="player_north" />');
+			for (var card in cards)
+			{
+				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
+			}
+			$(parent).append(hand);
+		}
+		else if (orientation.toUpperCase() == "W")
+		{
+			var hand = $('<ol id="player_west" />');
+			for (var card in cards)
+			{
+				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
+			}
+			$(parent).append(hand);
+		}
+		else if (orientation.toUpperCase() == "E")
+		{
+			var hand = $('<ol id="player_east" />');
+			for (var card in cards)
+			{
+				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
+			}
+			$(parent).append(hand);
+		}
+		else if (orientation.toUpperCase() == "S")
+		{
+			var hand = $('<ol id="player_south" />');
+			for (var card in cards)
+			{
+				$(hand).append('<li><img src="' + card.image + '" /></li>');
+			}
+			$(parent).append(hand);
+		}
 	}
 }
