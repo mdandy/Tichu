@@ -14,7 +14,7 @@
  */
 function Card (suit, value)
 {
-	value = (typeof value === undefined) ? null : value;
+	value = (value === undefined) ? null : value;
 	
 	this.suit = suit;
 	this.value = value;
@@ -144,7 +144,7 @@ var CardHelper =
 	/**
 	 * Get an SVG metadata of a card.
 	 * @param {Card} card The card to be evaluated
-	 * @return {CardSVG} The SVG metadata of the card
+	 * @return {string} The image path fo the card
 	 */	 
 	getImage: function(card)
 	{
