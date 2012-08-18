@@ -13,6 +13,7 @@
 	 
 	 /**
 	  * Join a game session.
+	  * @param {int} game_id The game session ID
 	  */
 	 join: function(game_id)
 	 {
@@ -41,9 +42,18 @@
 	  */
 	 start: function()
 	 {
-		 var card = new Card("diamond", "A");
-		 var parent = $("#gamearea");
-		 CardHelper.drawCard(parent, card, 0, 0, 90, true);
+		 GameState.init();
+		 if (GameState.isDealer)
+		 {
+			CardHelper.initDeck();
+			CardHelper.firstDeal();
+			CardHelper.secondDeal();
+		 }
+		 
+		 CardHelper.drawHand($(north), GameState.north_player);
+		 CardHelper.drawHand($(east), GameState.east_player);
+		 CardHelper.drawHand($(south), GameState.south_player);
+		 CardHelper.drawHand($(west), GameState.west_player);
 	 },
 	 
 	 /**

@@ -9,11 +9,13 @@
  *		- "dog"
  *		- "dragon"
  *		- "phoenix"
- * @param {string} value The face value of the card (2 to 10, J, Q, K, and A).
+ * @param {string} value [Optional] The face value of the card (2 to 10, J, Q, K, and A).
  *		This value can be null for special cards.
  */
 function Card (suit, value)
 {
+	value = (typeof value === undefined) ? null : value;
+	
 	this.suit = suit;
 	this.value = value;
 	this.point = CardHelper.getPoint(this);
@@ -27,6 +29,85 @@ function Card (suit, value)
 var CardHelper = 
 {
 	deck_src : "images/deck/",
+	deck : [],
+	
+	/**
+	 * Initialize the deck and shuffle it.
+	 */
+	initDeck: function()
+	{
+		// Init Spade cards
+		for (var i = 2; i <= 10; i++)
+		{
+			CardHelper.deck.push(new Card("spade", i));
+		}
+		CardHelper.deck.push(new Card("spade", "J"));
+		CardHelper.deck.push(new Card("spade", "Q"));
+		CardHelper.deck.push(new Card("spade", "K"));
+		CardHelper.deck.push(new Card("spade", "A"));
+		
+		// Init Heart cards
+		for (var i = 2; i <= 10; i++)
+		{
+			CardHelper.deck.push(new Card("heart", i));
+		}
+		CardHelper.deck.push(new Card("heart", "J"));
+		CardHelper.deck.push(new Card("heart", "Q"));
+		CardHelper.deck.push(new Card("heart", "K"));
+		CardHelper.deck.push(new Card("heart", "A"));
+		
+		// Init Diamond cards
+		for (var i = 2; i <= 10; i++)
+		{
+			CardHelper.deck.push(new Card("diamond", i));
+		}
+		CardHelper.deck.push(new Card("diamond", "J"));
+		CardHelper.deck.push(new Card("diamond", "Q"));
+		CardHelper.deck.push(new Card("diamond", "K"));
+		CardHelper.deck.push(new Card("diamond", "A"));
+		
+		// Init Club cards
+		for (var i = 2; i <= 10; i++)
+		{
+			CardHelper.deck.push(new Card("club", i));
+		}
+		CardHelper.deck.push(new Card("club", "J"));
+		CardHelper.deck.push(new Card("club", "Q"));
+		CardHelper.deck.push(new Card("club", "K"));
+		CardHelper.deck.push(new Card("club", "A"));
+		
+		// Init special cards
+		CardHelper.deck.push(new Card("mahjong"));
+		CardHelper.deck.push(new Card("dog"));
+		CardHelper.deck.push(new Card("dragon"));
+		CardHelper.deck.push(new Card("phoenix"));
+		
+		// Shuffle the cards
+		CardHelper.shuffle();
+	},
+	
+	/**
+	 * Shuffle the deck using Fisher-Yates shuffle algorithm.
+	 * @see http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+	 */
+	shuffle: function()
+	{
+		var m = CardHelper.deck.length;
+		var temp;
+		var i;
+		
+		// While there remain elements to shuffle
+		while (m)
+		{
+			// Pick a remaining element
+			i = Math.floor(Math.random() * m--);
+			
+			// And swap it with the current element
+			temp = CardHelper.deck[m];
+			CardHelper.deck[m] = CardHelper.deck[i];
+			CardHelper.deck[i] = temp;
+		}
+	},
 	
 	/**
 	 * Get the point of a card based on these specifications:
@@ -86,89 +167,139 @@ var CardHelper =
 		}
 		else if (card.suit.toLowerCase() == "mahjong")
 		{
-			
+			image += "mahjong.png";
 		}
 		else if (card.suit.toLowerCase() == "dog")
 		{
-			
+			image += "dog.png";
 		}
 		else if (card.suit.toLowerCase() == "dragon")
 		{
-			
+			image += "dragon.png";
 		}
 		else if (card.suit.toLowerCase() == "phoenix")
 		{
-			
+			image += "phoenix.png";
 		}
 
 		return image;
 	},
 	
 	/**
-	 * Draw the card on a canvas.
-	 * @param {DOM} parent The parent node where the image will be drawn
-	 * @param {Card} card The card to be drawn
-	 * @param {int} x The x-coordinate where the card will be drawn
-	 * @param {int} y The y-coordinate where the card will be drawn
-	 * @param {int} angle The angle of the card
-	 * @param {boolean} isFlipped Whether the card is flipped or not
+	 * Deal the first half of the deck.
 	 */
-	drawCard: function(parent, card, x, y, angle, isFlipped)
+	firstDeal: function()
 	{
-		var src = card.image;
-		if (isFlipped)
-			src = CardHelper.deck_src + "back.png";
-		var img = '<img src="' + src + '" />';
-		$(parent).html(img);
+		var firstDeal = 8;
+		for (var i = 0; i < firstDeal; i++)
+		{
+			var card = CardHelper.deck.pop();
+			GameState.player1.addCardsToHand(card);
+			
+			card = CardHelper.deck.pop();
+			GameState.player2.addCardsToHand(card);
+			
+			card = CardHelper.deck.pop();
+			GameState.player3.addCardsToHand(card);
+			
+			card = CardHelper.deck.pop();
+			GameState.player4.addCardsToHand(card);
+		}
+	},
+	
+	/**
+	 * Deal the second half of the deck.
+	 */
+	secondDeal: function()
+	{
+		while (CardHelper.deck.length)
+		{
+			var card = CardHelper.deck.pop();
+			GameState.player1.addCardsToHand(card);
+			
+			card = CardHelper.deck.pop();
+			GameState.player2.addCardsToHand(card);
+			
+			card = CardHelper.deck.pop();
+			GameState.player3.addCardsToHand(card);
+			
+			card = CardHelper.deck.pop();
+			GameState.player4.addCardsToHand(card);
+		}
 	},
 	
 	/**
 	 * Draw a player's hand.
 	 * @param {DOM} parent The parent node where the image will be drawn
-	 * @param {Card[]} cards Ar array of cards to be drawn
-	 * @param {string} orientation The rientation of the player. It should be one of these:
-	 *		- "N" = north player
-	 *		- "W" = west player
-	 *		- "E" = east player
-	 *		- "S" = south player
+	 * @param {Player} player The player's hand to be drawn
 	 */
-	drawHand: function(parent, cards, orientation)
+	drawHand: function(parent, player)
 	{
-		if (orientation.toUpperCase() == "N")
+		if (player === GameState.active_player)
 		{
-			var hand = $('<ol id="player_north" />');
-			for (var card in cards)
+			var hand = $('<ul class="player_hand" />');
+			var cards = player.hand;
+			for (var index in cards)
 			{
-				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
+				$(hand).append('<li><img src="' + cards[index].image + '" /></li>');
 			}
 			$(parent).append(hand);
 		}
-		else if (orientation.toUpperCase() == "W")
+		else
 		{
-			var hand = $('<ol id="player_west" />');
-			for (var card in cards)
+			var hand = $('<ul class="player_hand" />');
+			var cards = player.hand;
+			for (var index in cards)
 			{
-				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
+				// $(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
+				$(hand).append('<li><img src="' + cards[index].image + '" /></li>');
 			}
 			$(parent).append(hand);
 		}
-		else if (orientation.toUpperCase() == "E")
+		
+		// Stackify
+		var width = $(parent).width();
+		var cardWidth = 100;
+		var effectiveWidth = width - cardWidth;
+		var numCards = player.getNumberOfCards();
+		var offset = Math.round(effectiveWidth / (numCards - 1));
+		$(hand).children().each(function(index) {
+			var lefty = index * offset;
+			$(this).css("left", lefty);
+		});
+		
+		// Active player events
+		if (player === GameState.active_player)
 		{
-			var hand = $('<ol id="player_east" />');
-			for (var card in cards)
-			{
-				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
-			}
-			$(parent).append(hand);
-		}
-		else if (orientation.toUpperCase() == "S")
-		{
-			var hand = $('<ol id="player_south" />');
-			for (var card in cards)
-			{
-				$(hand).append('<li><img src="' + card.image + '" /></li>');
-			}
-			$(parent).append(hand);
+			
+			var zoom = -60;
+			$(hand).children().each(function(index) {
+				// Hover event
+				$(this).hover(function() {
+					var borderWidth = parseInt($(this).css("border-width"), 10);
+					if (borderWidth === 0)
+						$(this).css("top", zoom);
+				}, function() {
+					var borderWidth = parseInt($(this).css("border-width"), 10);
+					if (borderWidth === 0)
+						$(this).css("top", 0);
+				});
+				
+				// Select event
+				$(this).click(function() {
+					var borderWidth = parseInt($(this).css("border-width"), 10);
+					if (borderWidth === 0)
+					{
+						$(this).css("top", zoom);
+						$(this).css("border", "2px solid #2F74D0");
+					}
+					else
+					{
+						$(this).css("top", 0);
+						$(this).css("border", "0");
+					}
+				});
+			});
 		}
 	}
 }
