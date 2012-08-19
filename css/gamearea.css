@@ -15,6 +15,17 @@
 #gamearea li.selected
 {
 	border: 2px solid #2F74D0;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+#gamearea ul.player_hand img
+{
+	border: 1px solid #736F6E;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
 }
 
 #gamearea #north, #gamearea #west, #gamearea #east, #gamearea #south
