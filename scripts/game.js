@@ -58,6 +58,11 @@ var Game =
 		 Score.update(GameState.player1, GameState.player2, GameState.player3, GameState.player4, 50);
 		 Score.update(GameState.player1, GameState.player2, GameState.player3, GameState.player4, 125);
 		 Score.update(GameState.player1, GameState.player2, GameState.player3, GameState.player4, 200, "T");
+		 Score.update(GameState.player1, GameState.player2, GameState.player3, GameState.player4, 400, "GT");
+		 
+		 Controller.enablePlay(true);
+		 Controller.enablePass(true);
+		 Controller.enableTichu2(true);
 	},
 	 
 	/**

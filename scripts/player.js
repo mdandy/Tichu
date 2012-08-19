@@ -15,6 +15,7 @@ function Player (name, team)
 	this.addPoint = addPoint;
 	this.addCardsToHand = addCardsToHand;
 	this.getNumberOfCards = getNumberOfCards;
+	this.playCards = playCards;
 }
 
 /**
@@ -42,4 +43,33 @@ function addCardsToHand(card)
 function getNumberOfCards()
 {
 	return this.hand.length;
+}
+
+/**
+ * Play the player's selected cards.
+ */
+function playCards()
+{
+	var selectedCardsIndex = __getSelectedCardsIndex();
+	var selectedCards = new Array();
+	for (var index in selectedCardsIndex)
+	{
+		selectedCards.push(this.hand[selectedCardsIndex[index]]);
+	}
+	CardHelper.drawPlayedCards(selectedCards);
+}
+
+/**
+ * Get the selected cards' index.
+ * @return {int[]} The selected cards' index
+ */
+function __getSelectedCardsIndex()
+{
+	var selectedCardsIndex = new Array();
+	$("#gamearea #south ul.player_hand").children().each(function(index) {
+		var selected = $(this).hasClass("selected");
+		if (selected)
+			selectedCardsIndex.push(index);		
+	});
+	return selectedCardsIndex;
 }

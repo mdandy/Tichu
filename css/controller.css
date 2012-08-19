@@ -1,0 +1,26 @@
+/* CSS Document */
+
+#controller
+{
+	position: relative;
+	bottom: 140px;
+	left: 245px;
+}
+
+#controller img
+{
+	width: 40px;
+	height: 40px;
+	padding: 2px;
+}
+
+#controller img.selected
+{
+	border-bottom: 2px solid #5EAE9E;
+}
+
+#controller #controller1, #controller #controller2, #controller #controller3
+{
+	float: left;
+	margin-right: 75px;
+}

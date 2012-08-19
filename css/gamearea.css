@@ -12,6 +12,11 @@
 	position: absolute;
 }
 
+#gamearea li.selected
+{
+	border: 2px solid #2F74D0;
+}
+
 #gamearea #north, #gamearea #west, #gamearea #east, #gamearea #south
 {
 	width: 400px;
@@ -28,20 +33,29 @@
 #gamearea #south
 {
 	position: relative;
-	top: 173px;
+	top: 153px;
 	left: 185px;
 }
 
 #gamearea #west
 {
 	position: relative;
-	top: 170px;
+	top: 160px;
 	left: -105px;
 }
 
 #gamearea #east
 {
 	position: relative;
-	top: 15px;
+	top: 5px;
 	left: 480px;
+}
+
+#gamearea #center
+{
+	position: relative;
+	top: -350px;
+	left: 230px;
+	width: 320px;
+	height: 305px;
 }

@@ -291,15 +291,46 @@ var CardHelper =
 					if (borderWidth === 0)
 					{
 						$(this).css("top", zoom);
-						$(this).css("border", "2px solid #2F74D0");
+						$(this).addClass("selected");
 					}
 					else
 					{
 						$(this).css("top", 0);
-						$(this).css("border", "0");
+						$(this).removeClass("selected");
 					}
 				});
 			});
 		}
+	},
+	
+	/**
+	 * Draw cards being played.
+	 * @param {Card[]} cards The cards being played
+	 */
+	drawPlayedCards: function(cards)
+	{
+		var parent = $("#gamearea #center");
+		var hand = $('<ul class="played_cards" />');
+		for (var index in cards)
+		{
+			$(hand).append('<li><img src="' + cards[index].image + '" /></li>');
+		}
+		$(parent).append(hand);
+		
+		// Stackify
+		var maxCardsPerRow = 6;
+		var rowOffset = 60;
+		
+		var width = $(parent).width();
+		var cardWidth = 100;
+		var effectiveWidth = width - cardWidth;
+		var numCards = cards.length;
+		var offset = Math.round(effectiveWidth / (numCards - 1));
+		$(hand).children().each(function(index) {
+			var row = Math.floor(index / maxCardsPerRow);
+			var lefty = (index % maxCardsPerRow) * offset;
+			$(this).css("left", lefty);
+			$(this).css("top", row * rowOffset);
+		});
 	}
 }
