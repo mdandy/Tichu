@@ -251,8 +251,7 @@ var CardHelper =
 			var cards = player.hand;
 			for (var index in cards)
 			{
-				// $(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
-				$(hand).append('<li><img src="' + cards[index].image + '" /></li>');
+				$(hand).append('<li><img src="' + CardHelper.deck_src + 'back.png" /></li>');
 			}
 			$(parent).append(hand);
 		}
