@@ -3,8 +3,9 @@
 #controller
 {
 	position: relative;
-	bottom: 140px;
+	bottom: -25px;
 	left: 245px;
+	float: left;
 }
 
 #controller img

@@ -41,3 +41,9 @@
 {
 	text-align: center;
 }
+
+#scoreboard #menu img:hover
+{
+	text-align: center;
+	border-bottom: 2px solid #5EAE9E;
+}

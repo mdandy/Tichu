@@ -310,6 +310,8 @@ var CardHelper =
 	drawPlayedCards: function(cards)
 	{
 		var parent = $("#gamearea #center");
+		$(parent).empty();
+		
 		var hand = $('<ul class="played_cards" />');
 		for (var index in cards)
 		{
@@ -324,7 +326,7 @@ var CardHelper =
 		var width = $(parent).width();
 		var cardWidth = 100;
 		var effectiveWidth = width - cardWidth;
-		var numCards = cards.length;
+		var numCards = cards.length > maxCardsPerRow ? 6 : cards.length;
 		var offset = Math.round(effectiveWidth / (numCards - 1));
 		$(hand).children().each(function(index) {
 			var row = Math.floor(index / maxCardsPerRow);

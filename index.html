@@ -6,6 +6,7 @@
 	<title>Tichu</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 	
+	<link rel="stylesheet" type="text/css" href="libs/pepper-grinder/jquery-ui-1.8.23.custom.css" />
 	<link rel="stylesheet" type="text/css" href="css/font.css" />
 	<link rel="stylesheet" type="text/css" href="css/general.css" />
 	<link rel="stylesheet" type="text/css" href="css/scoreboard.css" />
@@ -13,11 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="css/controller.css" />
 	
 	<script type="text/javascript" src="libs/jquery-1.8.0.min.js" /></script>
+	<script type="text/javascript" src="libs/jquery-ui-1.8.23.custom.min.js" /></script>
 	<script type="text/javascript" src="scripts/card.js" /></script>
 	<script type="text/javascript" src="scripts/player.js" /></script>
 	<script type="text/javascript" src="scripts/state.js" /></script>
 	<script type="text/javascript" src="scripts/score.js" /></script>
 	<script type="text/javascript" src="scripts/controller.js" /></script>
+	<script type="text/javascript" src="scripts/menu.js" /></script>
 	<script type="text/javascript" src="scripts/game.js" /></script>
 </head>
 
@@ -46,7 +49,7 @@
 			</table>
 		</div>
 		<div id="menu">
-			<img src="images/menu.png" width="80" />
+			<img src="images/menu.png" width="80" onclick="Menu.show()" />
 		</div>
 	</div>
 	
@@ -56,12 +59,11 @@
 		<div id="east" class="rotate_90"></div>
 		<div id="south"></div>
 		<div id="center"></div>
-	</div>
-	
-	<div id="controller">
-		<div id="controller1"></div>
-		<div id="controller2"></div>
-		<div id="controller3"></div>
+		<div id="controller">
+			<div id="controller1"></div>
+			<div id="controller2"></div>
+			<div id="controller3"></div>
+		</div>
 	</div>
 	
 	<script type="text/javascript">

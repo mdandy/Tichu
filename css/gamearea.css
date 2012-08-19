@@ -32,6 +32,9 @@
 {
 	width: 400px;
 	height: 142px;
+	margin: 0px;
+	padding: 0px;
+	float: left;
 }
 
 #gamearea #north
@@ -65,8 +68,9 @@
 #gamearea #center
 {
 	position: relative;
-	top: -350px;
-	left: 230px;
-	width: 320px;
-	height: 305px;
+	top: -215px;
+	left: -190px;
+	float: left;
+	width: 350px;
+	height: 285px;
 }
