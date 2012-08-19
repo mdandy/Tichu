@@ -20,7 +20,7 @@
 	border-radius: 7px;
 }
 
-#gamearea ul.player_hand img
+#gamearea ul.player_hand img, #gamearea ul.played_cards img
 {
 	border: 1px solid #736F6E;
 	-webkit-border-radius: 7px;
