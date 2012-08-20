@@ -235,6 +235,7 @@ var CardHelper =
 	 */
 	drawHand: function(parent, player)
 	{
+		$(parent).empty();
 		if (player === GameState.active_player)
 		{
 			var hand = $('<ul class="player_hand" />');

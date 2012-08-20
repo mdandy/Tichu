@@ -50,10 +50,10 @@ var Game =
 			CardHelper.secondDeal();
 		}
 		 
-		 CardHelper.drawHand($(north), GameState.north_player);
-		 CardHelper.drawHand($(east), GameState.east_player);
-		 CardHelper.drawHand($(south), GameState.south_player);
-		 CardHelper.drawHand($(west), GameState.west_player);
+		 CardHelper.drawHand($("#north"), GameState.north_player);
+		 CardHelper.drawHand($("#east"), GameState.east_player);
+		 CardHelper.drawHand($("#south"), GameState.south_player);
+		 CardHelper.drawHand($("#west"), GameState.west_player);
 		 
 		 Score.update(GameState.player1, GameState.player2, GameState.player3, GameState.player4, 50);
 		 Score.update(GameState.player1, GameState.player2, GameState.player3, GameState.player4, 125);

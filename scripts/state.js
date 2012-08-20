@@ -35,10 +35,10 @@ var GameState =
 	load: function(game_id)
 	{
 		// Debug Load
-		GameState.player1 = new Player("Jaakko", 1);
-		GameState.player2 = new Player("Mandek", 2);
-		GameState.player3 = new Player("Ravi ", 1);
-		GameState.player4 = new Player("Cochise ", 2);
+		GameState.player1 = new Player("Jaakko", 1, $("#north"));
+		GameState.player2 = new Player("Mandek", 2, $("#west"));
+		GameState.player3 = new Player("Ravi ", 1, $("#south"));
+		GameState.player4 = new Player("Cochise ", 2, $("#east"));
 		
 		GameState.isDealer = true;
 		GameState.active_player = GameState.player3;

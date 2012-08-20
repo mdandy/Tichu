@@ -4,13 +4,15 @@
  * @param {int} team The team of the player. It is one of these:
  *		- 1 = North and South team
  *		- 2	= West and East team
+ * @param {DOM} sit The postion where the player sits
  */
-function Player (name, team)
+function Player (name, team, sit)
 {
 	this.name = name;
 	this.team = team;
 	this.hand = new Array();
 	this.point = 0;
+	this.sit = sit;
 	
 	this.addPoint = addPoint;
 	this.addCardsToHand = addCardsToHand;
@@ -52,11 +54,15 @@ function playCards()
 {
 	var selectedCardsIndex = __getSelectedCardsIndex();
 	var selectedCards = new Array();
-	for (var index in selectedCardsIndex)
+	for (var i = (selectedCardsIndex.length - 1); i >=0 ; i--)
 	{
-		selectedCards.push(this.hand[selectedCardsIndex[index]]);
+		var handIndex = selectedCardsIndex[i];
+		selectedCards.push(this.hand[handIndex]);
+		this.hand.splice(handIndex,1);
 	}
+	
 	CardHelper.drawPlayedCards(selectedCards);
+	CardHelper.drawHand(this.sit, this);
 }
 
 /**
@@ -73,3 +79,4 @@ function __getSelectedCardsIndex()
 	});
 	return selectedCardsIndex;
 }
+
